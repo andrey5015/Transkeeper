@@ -47,9 +47,9 @@ public class TransactionRepository : IRepository<Transaction>, IDisposable
     {
         try
         {
-            var rows = _connection.Execute(@"INSERT INTO [Transaction]
-                                           (Id, Amount, TransactionDate)
-                                           VALUES (@Id, @Amount, @TransactionDate);", item);
+            _connection.Execute(@"INSERT INTO [Transaction]
+                                   (Id, Amount, TransactionDate)
+                                   VALUES (@Id, @Amount, @TransactionDate);", item);
 
             return true;
         }
