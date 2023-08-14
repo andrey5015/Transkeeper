@@ -17,9 +17,7 @@ sc.AddSingleton<IConfiguration>(conf)
     .AddTransient<IRepository<Transaction>, TransactionRepository>();
 
 var reg = new TypeRegistrar(sc);
-
 var app = new CommandApp<DefaultCommand>(reg);
-
 app.Configure(cf =>
 {
     cf.AddCommand<AddCommand>("add")
@@ -34,7 +32,6 @@ app.Configure(cr =>
     cr.Settings.ExceptionHandler = ex =>
     {
         AnsiConsole.MarkupLine("[red]Program crashed, reason:[/]");
-
         AnsiConsole.WriteException(ex, new ExceptionSettings
         {
             Format = ExceptionFormats.ShortenEverything | ExceptionFormats.ShowLinks,

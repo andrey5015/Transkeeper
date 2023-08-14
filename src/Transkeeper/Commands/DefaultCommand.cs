@@ -40,7 +40,7 @@ public class DefaultCommand : Command<CmdSettings>
             var choice = AnsiConsole.Prompt(
                 new TextPrompt<string>("Choose one of the following actions [green]add/get/exit[/]:")
                     .ValidationErrorMessage("[red]That's not a valid action name[/]")
-                    .Validate(a => new[] { "add", "get", "exit" }.Contains(a.ToLower())));
+                    .Validate(a => new[] { add, get, exit }.Contains(a.ToLower())));
 
             switch (choice)
             {
