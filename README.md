@@ -1,1 +1,1 @@
-# Transkeeper
+# Just simple demo app:)
