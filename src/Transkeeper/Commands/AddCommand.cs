@@ -22,10 +22,10 @@ public sealed class AddCommand : Command<CmdSettings>
         if (!string.IsNullOrEmpty(settings.Id))
         {
             AnsiConsole.MarkupLine("[red]You cannot specify [white]-i|--id[/] with [white]add[/] command.[/]");
-            
+
             return (int)ExitCode.InvalidInput;
         }
-        
+
         Transaction tr;
 
         if (string.IsNullOrEmpty(settings.Json))
@@ -76,7 +76,7 @@ public sealed class AddCommand : Command<CmdSettings>
         if (_repository.TrySave(tr))
         {
             AnsiConsole.MarkupLine("[yellow]Successfully stored![/]");
-            
+
             return (int)ExitCode.Success;
         }
 

@@ -34,8 +34,8 @@ public class TransactionRepository : IRepository<Transaction>, IDisposable
         try
         {
             return _connection.Query<Transaction>(@"SELECT * FROM [Transaction]
-                                                     WHERE Id = @Id;", new { Id = id })
-                                                     .FirstOrDefault();
+                                                  WHERE Id = @Id;", new { Id = id })
+                                                  .FirstOrDefault();
         }
         catch (SqliteException e)
         {
@@ -48,8 +48,8 @@ public class TransactionRepository : IRepository<Transaction>, IDisposable
         try
         {
             var rows = _connection.Execute(@"INSERT INTO [Transaction]
-                                                 (Id, Amount, TransactionDate)
-                                                 VALUES (@Id, @Amount, @TransactionDate);", item);
+                                           (Id, Amount, TransactionDate)
+                                           VALUES (@Id, @Amount, @TransactionDate);", item);
 
             return true;
         }

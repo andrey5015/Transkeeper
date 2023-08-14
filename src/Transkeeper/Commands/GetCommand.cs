@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Security.Principal;
 using System.Text.Json;
 using Spectre.Console;
 using Spectre.Console.Cli;
