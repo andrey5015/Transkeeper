@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Security.Principal;
 using System.Text.Json;
 using Spectre.Console;
 using Spectre.Console.Cli;
@@ -25,7 +26,7 @@ public class GetCommand : Command<CmdSettings>
 
             return (int)ExitCode.InvalidInput;
         }
-        
+
         int id;
 
         if (string.IsNullOrEmpty(settings.Id))
@@ -36,7 +37,12 @@ public class GetCommand : Command<CmdSettings>
         }
         else
         {
-            id = int.Parse(settings.Id);
+            if (!int.TryParse(settings.Id, out id))
+            {
+                AnsiConsole.MarkupLine("[red]Transaction Id must be an integer.[/]");
+
+                return (int) ExitCode.InvalidInput;
+            }
         }
 
         var result = _repository.GetById(id);
