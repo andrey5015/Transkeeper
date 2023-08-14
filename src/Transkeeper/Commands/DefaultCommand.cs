@@ -31,18 +31,18 @@ public class DefaultCommand : Command<CmdSettings>
             return (int)ExitCode.InvalidInput;
         }
 
-		const string add = nameof(add);
-		const string get = nameof(get);
-		const string exit = nameof(exit);
+        const string add = nameof(add);
+        const string get = nameof(get);
+        const string exit = nameof(exit);
 
-		while (true)
+        while (true)
         {
-			var choice = AnsiConsole.Prompt(
-				new TextPrompt<string>("Choose one of the following actions [green]add/get/exit[/]:")
-					.ValidationErrorMessage("[red]That's not a valid action name[/]")
-					.Validate(a => new[] { "add", "get", "exit" }.Contains(a.ToLower())));
+            var choice = AnsiConsole.Prompt(
+                new TextPrompt<string>("Choose one of the following actions [green]add/get/exit[/]:")
+                    .ValidationErrorMessage("[red]That's not a valid action name[/]")
+                    .Validate(a => new[] { "add", "get", "exit" }.Contains(a.ToLower())));
 
-			switch (choice)
+            switch (choice)
             {
                 case add:
                     var addCmd = _serviceProvider.GetService<AddCommand>()!;
